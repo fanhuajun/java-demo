@@ -32,6 +32,5 @@ public class Hello {
     @RequestMapping
     public String freemarket(){
         return "index";
-        
     }
 }
