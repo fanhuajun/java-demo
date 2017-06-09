@@ -8,6 +8,6 @@
 	<packaging>pom</packaging>
 
 	<modules>
-		<module>Spring-boot-demo</module>
+		<module>Spring-boot-demo2</module>
 	</modules>
 </project>
