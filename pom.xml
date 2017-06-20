@@ -9,5 +9,7 @@
 
 	<modules>
 		<module>spring-cloud-eureka-server</module>
+		<module>spring-boot-starter-web</module>
 	</modules>
+	
 </project>
