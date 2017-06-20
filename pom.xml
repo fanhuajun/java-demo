@@ -8,6 +8,6 @@
 	<packaging>pom</packaging>
 
 	<modules>
-		<module>netflix-eureka-server</module>
+		<module>spring-cloud-eureka-server</module>
 	</modules>
 </project>
