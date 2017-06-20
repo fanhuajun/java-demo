@@ -8,6 +8,6 @@
 	<packaging>pom</packaging>
 
 	<modules>
-		<module>Spring-boot-demo2</module>
+		<module>netflix-eureka-server</module>
 	</modules>
 </project>
