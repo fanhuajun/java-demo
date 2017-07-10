@@ -11,6 +11,7 @@
 		<module>spring-cloud-eureka-server</module>
 		<module>spring-boot-starter-web</module>
 		<module>spring-cloud-netflix-eureka-client</module>
+		<module>springboot-weixin-java-mp</module>
 	</modules>
 	
 </project>
