@@ -1,0 +1,32 @@
+/*
+ * @(#)CityMapper.java 2017年7月10日
+ * 
+ * Copyright (c), 2016 深圳市万睿智能科技有限公司（Shenzhen Wan Rui Intelligent Technology Co., Ltd.）
+ * 
+ * 著作权人保留一切权利，任何使用需经授权。
+ */
+package com.github.binarywang.demo.wechat.mapper;
+
+import java.util.List;
+
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
+
+/**
+ *
+ * @author fanhuajun
+ * @date 2017年7月10日 上午12:19:32
+ * @version V1.0.0
+ * description：
+ * 
+ */
+@Mapper
+public interface InfoMapper {
+
+    @Select("SELECT info_detail FROM test.w_info where info_id in("
+              +"select info_id from test.w_keyword " 
+              +"where p_id in(SELECT keyword_id FROM test.w_keyword where keyword_name = #{keywordName}))")
+    List<String> findByState(@Param("keywordName") String keywordName);
+
+}

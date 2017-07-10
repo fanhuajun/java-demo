@@ -1,6 +1,7 @@
 package com.github.binarywang.demo.wechat.handler;
 
 import com.github.binarywang.demo.wechat.builder.TextBuilder;
+import com.github.binarywang.demo.wechat.mapper.InfoMapper;
 import com.github.binarywang.demo.wechat.utils.JsonUtils;
 import me.chanjar.weixin.common.api.WxConsts;
 import me.chanjar.weixin.common.exception.WxErrorException;
@@ -9,8 +10,10 @@ import me.chanjar.weixin.mp.api.WxMpService;
 import me.chanjar.weixin.mp.bean.message.WxMpXmlMessage;
 import me.chanjar.weixin.mp.bean.message.WxMpXmlOutMessage;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -18,6 +21,9 @@ import java.util.Map;
  */
 @Component
 public class MsgHandler extends AbstractHandler {
+    
+    @Autowired
+    private InfoMapper infoMapper;
 
     @Override
     public WxMpXmlOutMessage handle(WxMpXmlMessage wxMessage,
@@ -46,13 +52,12 @@ public class MsgHandler extends AbstractHandler {
         String content = "收到信息内容：" + JsonUtils.toJson(wxMessage);
         
         //名字判断
-        if(StringUtils.startsWithAny(wxMessage.getContent(), "刘园明")){
+        /*if(StringUtils.startsWithAny(wxMessage.getContent(), "樊华军")){
             content = "此人现居深圳，从事软件开发，毕业于西安文理学院";
-        } else if(StringUtils.startsWithAny(wxMessage.getContent(), "徐世魁", "世魁")){
-            content = "此人现居深圳，从事建筑设计，毕业于河南工业大学";
-        } else if(StringUtils.startsWithAny(wxMessage.getContent(), "樊华军", "华军")){
-            content = "此人现居深圳，从事软件开发，毕业于西安文理学院";
-        }
+        }*/
+        
+        List<String> messageList = infoMapper.findByState(wxMessage.getContent());
+        content = messageList.toString();
 
         return new TextBuilder().build(content, wxMessage, weixinService);
 
