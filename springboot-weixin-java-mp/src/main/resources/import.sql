@@ -41,12 +41,13 @@ CREATE TABLE w_keyword(
 						p_id INT,
 						keyword_name VARCHAR(255),
 						info_id INT,
+						u_id int,
 						create_time DATETIME COMMENT '创建时间  默认精确到秒'
 						)ENGINE=INNODB DEFAULT CHARSET=utf8;
-INSERT INTO w_keyword(keyword_id, p_id,keyword_name, info_id, create_time)
-                  VALUE(1, 0, '地址', null, '2017-05-15 15:18:51'),
-                       (2, 1, '地址1', 1, '2017-05-15 15:18:51'),
-                       (3, 1, '地址2', 2, '2017-05-15 15:18:51');
+INSERT INTO w_keyword(keyword_id, p_id,keyword_name, info_id, u_id, create_time)
+                  VALUE(1, 0, '地址', null, 100, '2017-05-15 15:18:51'),
+                       (2, 1, '地址1', 1, 100, '2017-05-15 15:18:51'),
+                       (3, 1, '地址2', 2, 100, '2017-05-15 15:18:51');
 
 --SELECT * FROM test.w_info where info_id in(
 --  select info_id from test.w_keyword 

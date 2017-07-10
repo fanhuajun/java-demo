@@ -13,6 +13,8 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
+import com.github.binarywang.demo.wechat.domain.InfoDO;
+
 /**
  *
  * @author fanhuajun
@@ -27,6 +29,7 @@ public interface InfoMapper {
     @Select("SELECT info_detail FROM test.w_info where info_id in("
               +"select info_id from test.w_keyword " 
               +"where p_id in(SELECT keyword_id FROM test.w_keyword where keyword_name = #{keywordName}))")
-    List<String> findByState(@Param("keywordName") String keywordName);
+    List<InfoDO> searchChildInfo(@Param("keywordName") String keywordName);
+    
 
 }

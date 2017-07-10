@@ -18,16 +18,13 @@ public class WxMpDemoApplication implements CommandLineRunner {
     }
 
     final private CityMapper cityMapper;
-    final private InfoMapper infoMapper;
 
     public WxMpDemoApplication(CityMapper cityMapper, InfoMapper infoMapper) {
         this.cityMapper = cityMapper;
-        this.infoMapper = infoMapper;
     }
 
     @Override
     public void run(String... args) throws Exception {
         System.out.println(this.cityMapper.findByState("CA"));
-        System.out.println(this.infoMapper.findByState("地址"));
     }
 }

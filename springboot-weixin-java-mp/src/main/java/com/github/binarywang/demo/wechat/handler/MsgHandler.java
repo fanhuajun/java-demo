@@ -1,20 +1,23 @@
 package com.github.binarywang.demo.wechat.handler;
 
+import java.util.List;
+import java.util.Map;
+
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import com.github.binarywang.demo.wechat.builder.TextBuilder;
+import com.github.binarywang.demo.wechat.domain.InfoDO;
 import com.github.binarywang.demo.wechat.mapper.InfoMapper;
 import com.github.binarywang.demo.wechat.utils.JsonUtils;
+
 import me.chanjar.weixin.common.api.WxConsts;
 import me.chanjar.weixin.common.exception.WxErrorException;
 import me.chanjar.weixin.common.session.WxSessionManager;
 import me.chanjar.weixin.mp.api.WxMpService;
 import me.chanjar.weixin.mp.bean.message.WxMpXmlMessage;
 import me.chanjar.weixin.mp.bean.message.WxMpXmlOutMessage;
-import org.apache.commons.lang3.StringUtils;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-
-import java.util.List;
-import java.util.Map;
 
 /**
  * @author Binary Wang(https://github.com/binarywang)
@@ -55,9 +58,11 @@ public class MsgHandler extends AbstractHandler {
         /*if(StringUtils.startsWithAny(wxMessage.getContent(), "樊华军")){
             content = "此人现居深圳，从事软件开发，毕业于西安文理学院";
         }*/
-        
-        List<String> messageList = infoMapper.findByState(wxMessage.getContent());
-        content = messageList.toString();
+        content = "";
+        List<InfoDO> messageList = infoMapper.searchChildInfo(wxMessage.getContent());
+        for(InfoDO infoDO : messageList){
+            content = content + infoDO.getInfo_detail() + "\n";
+        }
 
         return new TextBuilder().build(content, wxMessage, weixinService);
 
