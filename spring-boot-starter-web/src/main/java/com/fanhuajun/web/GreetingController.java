@@ -28,5 +28,20 @@ public class GreetingController {
         model.addAttribute("name", name);
         return "greeting";
     }
+    
+    @RequestMapping("/hello")
+    public String hello() {
+        return "hello";
+    }
 
 }
+
+
+
+
+
+
+
+
+
+
