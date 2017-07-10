@@ -26,10 +26,16 @@ import com.github.binarywang.demo.wechat.domain.InfoDO;
 @Mapper
 public interface InfoMapper {
 
-    @Select("SELECT info_detail FROM test.w_info where info_id in("
-              +"select info_id from test.w_keyword " 
-              +"where p_id in(SELECT keyword_id FROM test.w_keyword where keyword_name = #{keywordName}))")
+    @Select("SELECT * FROM w_info where infoId in("
+              +"select infoId from w_keyword " 
+              +"where pId in(SELECT keywordId FROM w_keyword where keywordName = #{keywordName}))")
     List<InfoDO> searchChildInfo(@Param("keywordName") String keywordName);
+    
+    
+    @Select("SELECT * FROM w_info where infoId = ("
+              +"select infoId from w_keyword " 
+              +"where keywordName = #{keywordName})")
+    InfoDO searchInfo(@Param("keywordName") String keywordName);
     
 
 }

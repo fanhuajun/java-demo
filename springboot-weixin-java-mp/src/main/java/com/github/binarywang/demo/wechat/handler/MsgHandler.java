@@ -54,14 +54,17 @@ public class MsgHandler extends AbstractHandler {
         //TODO 组装回复消息
         String content = "收到信息内容：" + JsonUtils.toJson(wxMessage);
         
-        //名字判断
-        /*if(StringUtils.startsWithAny(wxMessage.getContent(), "樊华军")){
-            content = "此人现居深圳，从事软件开发，毕业于西安文理学院";
-        }*/
         content = "";
-        List<InfoDO> messageList = infoMapper.searchChildInfo(wxMessage.getContent());
-        for(InfoDO infoDO : messageList){
-            content = content + infoDO.getInfo_detail() + "\n";
+        InfoDO infoDO = infoMapper.searchInfo(wxMessage.getContent());
+        if(infoDO != null && infoDO.getInfoDetail() != null){
+            content = infoDO.getInfoDetail();
+        } else {
+            List<InfoDO> infoDOList = infoMapper.searchChildInfo(wxMessage.getContent());
+            if(infoDOList != null){
+                for(InfoDO info : infoDOList){
+                    content = content + info.getInfoDetail()+ "\n";
+                }
+            }
         }
 
         return new TextBuilder().build(content, wxMessage, weixinService);

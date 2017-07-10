@@ -25,48 +25,46 @@ public class InfoDO implements Serializable {
      */
     private static final long serialVersionUID = -6392720290828669008L;
     
-    private Integer info_id;
+    private Integer infoId;
     
-    private Integer u_id;
+    private Integer uId;
     
-    private String info_detail;
+    private String infoDetail;
     
-    private Date create_time;
+    private Date createTime;
 
-    public String getInfo_detail() {
-        return info_detail;
+    public Integer getInfoId() {
+        return infoId;
     }
 
-    public void setInfo_detail(String info_detail) {
-        this.info_detail = info_detail;
+    public void setInfoId(Integer infoId) {
+        this.infoId = infoId;
     }
 
-    public Integer getInfo_id() {
-        return info_id;
+    public Integer getuId() {
+        return uId;
     }
 
-    public void setInfo_id(Integer info_id) {
-        this.info_id = info_id;
+    public void setuId(Integer uId) {
+        this.uId = uId;
     }
 
-    public Integer getU_id() {
-        return u_id;
+    public String getInfoDetail() {
+        return infoDetail;
     }
 
-    public void setU_id(Integer u_id) {
-        this.u_id = u_id;
+    public void setInfoDetail(String infoDetail) {
+        this.infoDetail = infoDetail;
     }
 
-    public Date getCreate_time() {
-        return create_time;
+    public Date getCreateTime() {
+        return createTime;
     }
 
-    public void setCreate_time(Date create_time) {
-        this.create_time = create_time;
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 
-    
-    
     
 
 }
