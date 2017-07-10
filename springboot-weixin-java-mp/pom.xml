@@ -11,7 +11,7 @@
 
 	<groupId>com.github.binarywang</groupId>
 	<version>1.0.0-SNAPSHOT</version>
-	<artifactId>weixin-java-mp-springboot</artifactId>
+	<artifactId>springboot-weixin-java-mp</artifactId>
 	<packaging>jar</packaging>
 
 	<name>spring-boot-demo-for-wechat-mp</name>
