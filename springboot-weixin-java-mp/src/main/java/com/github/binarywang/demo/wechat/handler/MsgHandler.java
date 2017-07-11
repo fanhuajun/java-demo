@@ -9,7 +9,9 @@ import org.springframework.stereotype.Component;
 
 import com.github.binarywang.demo.wechat.builder.TextBuilder;
 import com.github.binarywang.demo.wechat.domain.InfoDO;
+import com.github.binarywang.demo.wechat.domain.KeywordDO;
 import com.github.binarywang.demo.wechat.mapper.InfoMapper;
+import com.github.binarywang.demo.wechat.mapper.KeywordMapper;
 import com.github.binarywang.demo.wechat.utils.JsonUtils;
 
 import me.chanjar.weixin.common.api.WxConsts;
@@ -27,6 +29,9 @@ public class MsgHandler extends AbstractHandler {
     
     @Autowired
     private InfoMapper infoMapper;
+    
+    @Autowired
+    private KeywordMapper KeywordMapper;
 
     @Override
     public WxMpXmlOutMessage handle(WxMpXmlMessage wxMessage,
@@ -53,19 +58,36 @@ public class MsgHandler extends AbstractHandler {
 
         //TODO 组装回复消息
         String content = "收到信息内容：" + JsonUtils.toJson(wxMessage);
-        
         content = "";
+        //查询用户拥有的关键字
+        List<String> keywordNameList = KeywordMapper.selectKeywordIdByUserId(wxMessage.getFromUser());
+        if(!keywordNameList.isEmpty()){
+            content += "你可以查询的关键字有:\n";
+            for(String str : keywordNameList){
+                content = content + str+ "\n";
+            }
+        }
+        /*//查询关键字信息
         InfoDO infoDO = infoMapper.searchInfo(wxMessage.getContent());
         if(infoDO != null && infoDO.getInfoDetail() != null){
             content = infoDO.getInfoDetail();
         } else {
+            //查询子关键字信息
             List<InfoDO> infoDOList = infoMapper.searchChildInfo(wxMessage.getContent());
-            if(infoDOList != null){
+            if(!infoDOList.isEmpty()){
                 for(InfoDO info : infoDOList){
                     content = content + info.getInfoDetail()+ "\n";
                 }
+                List<KeywordDO> keywordDOList = KeywordMapper.seletChildKeyword(wxMessage.getContent());
+                
+                if(!keywordDOList.isEmpty()){
+                    content += "\n你还可以输入 \n";
+                    for(KeywordDO keywordDO : keywordDOList){
+                        content = content + keywordDO.getKeywordName()+ "\n";
+                    }
+                }
             }
-        }
+        }*/
 
         return new TextBuilder().build(content, wxMessage, weixinService);
 
