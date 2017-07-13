@@ -32,15 +32,17 @@ public interface KeywordMapper {
     
     
     /**
-     * 根据关键字查询
+     * 
+     * 权限：根据关键字查询
      * @param keywordName
      * @return
      */
-    @Select("SELECT * FROM w_keyword WHERE keywordName = #{keywordName")
-    public KeywordDO selectByKeywordName(@Param("keywordName") String keywordName);
+    @Select("SELECT * FROM w_keyword WHERE keywordName = #{keywordName and keywordId in(#{userKeywordId} ")
+    public KeywordDO selectByKeywordName(@Param("keywordName") String keywordName, @Param("userKeywordId") String userKeywordId);
     
     /**
      * 主键查询
+     * 可查询父节点
      * @param keywordId
      * @return
      */
@@ -66,7 +68,7 @@ public interface KeywordMapper {
     @Select("SELECT * FROM w_keyword "
             +"WHERE pId in (select pId from w_keyword where keywordId = #{keywordId}) "
             +"AND keywordId NOT IN(#{keywordId}) "
-            + "and keywordId in(#{userKeyword})")
-    public List<KeywordDO> selectOtherSiblingsKeyword(@Param("keywordId") String keywordId, @Param("userKeyword") String userKeyword);
+            + "and keywordId in(#{userKeywordId})")
+    public List<KeywordDO> selectOtherSiblingsKeyword(@Param("keywordId") String keywordId, @Param("userKeywordId") String userKeywordId);
 
 }

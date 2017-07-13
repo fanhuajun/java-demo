@@ -1,6 +1,5 @@
 package com.github.binarywang.demo.wechat.handler;
 
-import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.lang3.StringUtils;
@@ -8,10 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.github.binarywang.demo.wechat.builder.TextBuilder;
-import com.github.binarywang.demo.wechat.domain.InfoDO;
-import com.github.binarywang.demo.wechat.domain.KeywordDO;
+import com.github.binarywang.demo.wechat.domain.UserDO;
 import com.github.binarywang.demo.wechat.mapper.InfoMapper;
 import com.github.binarywang.demo.wechat.mapper.KeywordMapper;
+import com.github.binarywang.demo.wechat.mapper.UserMapper;
 import com.github.binarywang.demo.wechat.utils.JsonUtils;
 
 import me.chanjar.weixin.common.api.WxConsts;
@@ -32,6 +31,11 @@ public class MsgHandler extends AbstractHandler {
     
     @Autowired
     private KeywordMapper KeywordMapper;
+    
+    @Autowired
+    private UserMapper userMapper;
+    
+    
 
     @Override
     public WxMpXmlOutMessage handle(WxMpXmlMessage wxMessage,
@@ -55,18 +59,28 @@ public class MsgHandler extends AbstractHandler {
             e.printStackTrace();
         }
         
+        
+        
 
         //TODO 组装回复消息
         String content = "收到信息内容：" + JsonUtils.toJson(wxMessage);
         content = "";
+        
+        UserDO userDO = userMapper.selectByOpenId(wxMessage.getFromUser());
+        
+        content = userDO.toString();
         //查询用户拥有的关键字
-        List<String> keywordNameList = KeywordMapper.selectKeywordIdByUserId(wxMessage.getFromUser());
+       /* List<String> keywordNameList = KeywordMapper.selectKeywordIdByUserId(wxMessage.getFromUser());
+        String userKeywordId = "";
         if(!keywordNameList.isEmpty()){
-            content += "你可以查询的关键字有:\n";
+            userKeywordId += "你可以查询的关键字有:\n";
             for(String str : keywordNameList){
-                content = content + str+ "\n";
+                userKeywordId += str+",";
             }
-        }
+        }*/
+        //查询父节点
+        /*KeywordDO keywordDO = KeywordMapper.selectByKeywordName(wxMessage.getFromUser(), userKeywordId);
+        content = keywordDO.getKeywordName();*/
         /*//查询关键字信息
         InfoDO infoDO = infoMapper.searchInfo(wxMessage.getContent());
         if(infoDO != null && infoDO.getInfoDetail() != null){

@@ -8,6 +8,11 @@
 package com.github.binarywang.demo.wechat.mapper;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.SelectProvider;
+
+import com.github.binarywang.demo.wechat.domain.UserDO;
+import com.github.binarywang.demo.wechat.sql.UserSql;
 
 /**
  *
@@ -18,8 +23,14 @@ import org.apache.ibatis.annotations.Mapper;
  * 
  */
 @Mapper
-public class UserMapper {
+public interface UserMapper {
     
-    
+    /**
+     * 根据openId查询用户信息
+     * @param openId
+     * @return
+     */
+    @SelectProvider (type = UserSql.class, method = "selectByOpenId")
+    public UserDO selectByOpenId(@Param ("openId") String openId);
 
 }
