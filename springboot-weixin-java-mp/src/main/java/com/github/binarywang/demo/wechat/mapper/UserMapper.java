@@ -12,7 +12,7 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.SelectProvider;
 
 import com.github.binarywang.demo.wechat.domain.UserDO;
-import com.github.binarywang.demo.wechat.sql.UserSql;
+import com.github.binarywang.demo.wechat.mapper.sql.UserSql;
 
 /**
  *

@@ -5,7 +5,7 @@
  * 
  * 著作权人保留一切权利，任何使用需经授权。
  */
-package com.github.binarywang.demo.wechat.sql;
+package com.github.binarywang.demo.wechat.mapper.sql;
 
 import java.util.Map;
 
