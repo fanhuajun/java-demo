@@ -19,8 +19,9 @@ CREATE TABLE w_user(
 						createTime DATETIME COMMENT '创建时间  默认精确到秒'
 						)ENGINE=INNODB AUTO_INCREMENT=100 DEFAULT CHARSET=utf8;
 INSERT INTO w_user(userName, openId, createTime)
-                  VALUE("樊华军", 'o48PpwDDICjLZzrkAxH4hZhykbKE','2017-05-15 15:18:51');
-
+                  VALUE("用户名1", 'o48PpwDDICjLZzrkAxH4hZhykbKE','2017-05-15 15:18:51');
+---用户名1 樊华军
+                  
 -- table 信息表
 DROP TABLE IF EXISTS w_info;
 CREATE TABLE w_info(

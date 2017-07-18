@@ -7,10 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.github.binarywang.demo.wechat.builder.TextBuilder;
-import com.github.binarywang.demo.wechat.domain.UserDO;
 import com.github.binarywang.demo.wechat.mapper.InfoMapper;
 import com.github.binarywang.demo.wechat.mapper.KeywordMapper;
 import com.github.binarywang.demo.wechat.mapper.UserMapper;
+import com.github.binarywang.demo.wechat.service.UserService;
 import com.github.binarywang.demo.wechat.utils.JsonUtils;
 
 import me.chanjar.weixin.common.api.WxConsts;
@@ -34,6 +34,9 @@ public class MsgHandler extends AbstractHandler {
     
     @Autowired
     private UserMapper userMapper;
+    
+    @Autowired
+    private UserService userService;
     
     
 
@@ -66,9 +69,8 @@ public class MsgHandler extends AbstractHandler {
         String content = "收到信息内容：" + JsonUtils.toJson(wxMessage);
         content = "";
         
-        UserDO userDO = userMapper.selectByOpenId(wxMessage.getFromUser());
-        
-        content = userDO.toString();
+        //检验用户 是否存在，不存在则需添加用户
+        content = userService.checkUser(wxMessage);
         //查询用户拥有的关键字
        /* List<String> keywordNameList = KeywordMapper.selectKeywordIdByUserId(wxMessage.getFromUser());
         String userKeywordId = "";
