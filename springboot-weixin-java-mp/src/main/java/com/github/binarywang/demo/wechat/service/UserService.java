@@ -39,5 +39,11 @@ public class UserService extends BaseService {
         }
         return ret;
     }
+    
+    public String addUser(WxMpXmlMessage wxMpXmlMessage){
+        String ret = "";
+        
+        return ret;
+    }
 
 }
