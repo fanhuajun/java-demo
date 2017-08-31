@@ -68,7 +68,16 @@ INSERT INTO w_ref_user_keyword(userId, keywordId)
                    (100, 2),
                    (100, 3);
                        
-
+-- Command
+DROP TABLE IF EXISTS w_command;
+create table w_command(
+                 commandId int primary key auto_increment,
+                 commandCode varchar(255) comment '命令代码',
+                 commandName varchar(255),
+                 createTime datetime default now() comment '创建时间'
+                 )engine=innodb default charset=utf8;
+insert into w_command(commandCode, commandName)
+               value('101-', '添加用户名');
 --SELECT * FROM test.w_info where infoId in(
 --  select infoId from test.w_keyword 
 --  where pId in(SELECT keywordId FROM test.w_keyword where keywordName = '地址'
