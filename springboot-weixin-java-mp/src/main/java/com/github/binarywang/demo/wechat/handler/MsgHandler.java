@@ -108,5 +108,12 @@ public class MsgHandler extends AbstractHandler {
         return new TextBuilder().build(content, wxMessage, weixinService);
 
     }
+    
+    private Boolean dispatchCommand(WxMpXmlMessage wxMpXmlMessage){
+        
+        
+        
+        return null;
+    }
 
 }

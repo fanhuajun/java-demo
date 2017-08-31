@@ -18,19 +18,19 @@ import com.github.binarywang.demo.wechat.mapper.sql.UserSql;
  *
  * @author fanhuajun
  * @date 2017年7月10日 下午11:16:38
- * @version V1.0.0
- * description：
+ * @version V1.0.0 description：
  * 
  */
 @Mapper
 public interface UserMapper {
-    
+
     /**
      * 根据openId查询用户信息
+     * 
      * @param openId
      * @return
      */
-    @SelectProvider (type = UserSql.class, method = "selectByOpenId")
-    public UserDO selectByOpenId(@Param ("openId") String openId);
+    @SelectProvider(type = UserSql.class, method = "selectByOpenId")
+    public UserDO selectByOpenId(@Param("openId") String openId);
 
 }

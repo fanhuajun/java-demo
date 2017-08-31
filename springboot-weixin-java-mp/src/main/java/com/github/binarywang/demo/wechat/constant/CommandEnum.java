@@ -17,7 +17,9 @@ package com.github.binarywang.demo.wechat.constant;
  */
 public enum CommandEnum {
     
-    USER_NAME_ADD("添加用户", "addUser", 10001);
+    USER_NAME_ADD(102, "添加用户", "addUser"),
+    
+    USER_IDCARD_SELECT(105, "获取身份证信息", "getIdCard");
     
     private String commandName;
     
@@ -25,7 +27,7 @@ public enum CommandEnum {
     
     private int number;
     
-    CommandEnum(String commandName, String commandCode, int number) {
+    CommandEnum(int number, String commandName, String commandCode) {
         // TODO Auto-generated constructor stub
         this.commandName = commandName;
         this.commandCode = commandCode;
