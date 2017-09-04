@@ -1,8 +1,11 @@
 package com.huajun.file.fileOperate;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.io.InputStreamReader;
 
 /**
@@ -12,7 +15,9 @@ import java.io.InputStreamReader;
 public class App {
     public static void main(String[] args) {
         System.out.println("Hello World!");
-        readTxtFile();
+//        readTxtFile();
+        
+        writeFile();
     }
 
     public static void readTxtFile() {
@@ -36,5 +41,23 @@ public class App {
             System.out.println("读取文件内容出错");
             e.printStackTrace();
         }
+    }
+    
+    public static void writeFile(){
+        
+        /* 写入Txt文件 */  
+        File writename = new File("D:/2.sql"); // 相对路径，如果没有则要建立一个新的output.txt文件  
+        
+        try {
+            writename.createNewFile();// 创建新文件  
+            BufferedWriter out = new BufferedWriter(new FileWriter(writename));  
+            out.write("我会写入文件啦\r\n"); // \r\n即为换行  
+            out.flush(); // 把缓存区内容压入文件  
+            out.close(); // 最后记得关闭文件 
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } 
+        
     }
 }
