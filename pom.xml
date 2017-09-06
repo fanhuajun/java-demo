@@ -12,6 +12,8 @@
 		<module>spring-boot-starter-web</module>
 		<module>spring-cloud-netflix-eureka-client</module>
 		<module>springboot-weixin-java-mp</module>
+		
+		<module>file</module>
 	</modules>
 	
 </project>
