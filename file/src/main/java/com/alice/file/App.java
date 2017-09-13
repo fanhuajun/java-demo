@@ -8,6 +8,9 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.RandomAccessFile;
 
+import junit.framework.Test;
+import junit.framework.TestSuite;
+
 /**
  * Hello world!
  *
@@ -15,12 +18,10 @@ import java.io.RandomAccessFile;
 public class App {
 	public static void main(String[] args) {
 		System.out.println("Hello World!");
-		
-		if(args.length > 0){
+
+		if (args.length > 0) {
 			System.out.println("[入参]args: " + args[0]);
 		}
-		
-		
 
 		contentToTxt("你好", "D:/home/ebalog-fire/app/vanrui-firefighting-app/note.txt");
 
@@ -104,6 +105,10 @@ public class App {
 			e.printStackTrace();
 
 		}
+	}
+
+	public static Test suite() {
+		return new TestSuite(AppTest.class);
 	}
 
 }
