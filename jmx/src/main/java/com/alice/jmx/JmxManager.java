@@ -33,7 +33,7 @@ public class JmxManager {
 		Map<String, String[]> map = new HashMap<String, String[]>();
 		map.put("jmx.remote.credentials", new String[] { "monitorRole", "QED" });
 		//service:jmx:rmi:///jndi/rmi://10.0.76.32:10086/jmxrmi
-		String jmxURL = "service:jmx:rmi:///jndi/rmi://10.0.76.32:10086/jmxrmi";
+		String jmxURL = "service:jmx:rmi:///jndi/rmi://10.1.251.16:10086/jmxrmi";
 
 		JMXServiceURL serviceURL = new JMXServiceURL(jmxURL);
 		connector = JMXConnectorFactory.connect(serviceURL, map);
