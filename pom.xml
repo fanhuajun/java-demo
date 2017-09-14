@@ -9,11 +9,15 @@
 
 	<modules>
 		<module>spring-cloud-eureka-server</module>
-		<module>spring-boot-starter-web</module>
 		<module>spring-cloud-netflix-eureka-client</module>
+		<module>spring-cloud-netflix-eureka-server</module>
+		<module>spring-boot-starter-web</module>
+		<module>spring-boot-freemarker</module>
+		
 		<module>springboot-weixin-java-mp</module>
 		
 		<module>file</module>
+		<module>jmx</module>
 	</modules>
 	
 </project>
