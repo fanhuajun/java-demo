@@ -9,7 +9,7 @@ After run the file, then you can see the hello world print on screen
 
 # jmx
 ## instruction
-- 配置jvisualvm
+- jvisualvm  configuration parameter
 ```ruby
 JAVA_OPTS="$JAVA_OPTS -Dcom.sun.management.jmxremote"
 JAVA_OPTS="$JAVA_OPTS -Dcom.sun.management.jmxremote.ssl=false"
