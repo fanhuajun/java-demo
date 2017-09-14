@@ -26,6 +26,8 @@ public class JmxManager {
 	static JMXConnector connector = null;
 
 	static MBeanServerConnection mbsc = null;
+	
+//	protected Logger logger = LoggerFactory.getLogger(getClass());
 
 	public static void getConnection() throws Exception {
 
@@ -33,13 +35,14 @@ public class JmxManager {
 		Map<String, String[]> map = new HashMap<String, String[]>();
 		map.put("jmx.remote.credentials", new String[] { "monitorRole", "QED" });
 		//service:jmx:rmi:///jndi/rmi://10.0.76.32:10086/jmxrmi
-		String jmxURL = "service:jmx:rmi:///jndi/rmi://10.1.251.16:10086/jmxrmi";
+		String socket = "10.1.251.16:10086";
+		String jmxURL = "service:jmx:rmi:///jndi/rmi://" +socket +"/jmxrmi";
 
 		JMXServiceURL serviceURL = new JMXServiceURL(jmxURL);
 		connector = JMXConnectorFactory.connect(serviceURL, map);
 		mbsc = connector.getMBeanServerConnection();
 		
-		System.out.println("连接成功");
+		System.out.println("成功连接上了  :" +socket);
 		
 		getMemory();
 
