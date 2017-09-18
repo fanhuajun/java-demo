@@ -8,6 +8,9 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.RandomAccessFile;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import junit.framework.Test;
 import junit.framework.TestSuite;
 
@@ -16,13 +19,16 @@ import junit.framework.TestSuite;
  *
  */
 public class App {
+	
+	protected Logger logger = LoggerFactory.getLogger(getClass());
+	
 	public static void main(String[] args) {
 		System.out.println("Hello World!");
 
 		if (args.length > 0) {
 			System.out.println("[入参]args: " + args[0]);
 		}
-
+		
 		contentToTxt("你好", "D:/home/ebalog-fire/app/vanrui-firefighting-app/note.txt");
 
 	}

@@ -18,7 +18,7 @@ public class JVMMBeans {
 		MBeanServer server = ManagementFactory.getPlatformMBeanServer();
         
         Set instances = server.queryMBeans(null, null);
-         
+        
         Iterator iterator = instances.iterator();
          
         while (iterator.hasNext()) {

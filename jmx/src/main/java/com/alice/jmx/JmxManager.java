@@ -93,14 +93,14 @@ public class JmxManager {
 		System.out.println("厂商:" + (String) mbsc.getAttribute(runtimeObjName,"VmVendor"));
 		
 		
-		// PermGen内存
-		ObjectName permObjName = new ObjectName("java.lang:type=MemoryPool,name=Perm Gen");
+		// PermGen内存   java.lang:type=MemoryPool,name=PS Survivor Space
+		ObjectName permObjName = new ObjectName("java.lang:type=MemoryPool,name=Metaspace");
 		Object object1  = mbsc.getAttribute(permObjName, "Usage");
 
 		MemoryUsage permGenUsage = MemoryUsage.from((CompositeDataSupport) object1);
-		long committed = permGenUsage.getCommitted();// 持久堆大小
+		long committed = permGenUsage.getCommitted();// 元空间大小
 		long used = heapMemoryUsage.getUsed();//
-		System.out.println("perm gen:" + (int) used * 100 / committed + "%");// 持久堆使用率
+		System.out.println("Metaspace:" + (int) used * 100 / committed + "%");// 元空间使用率
 
 	}
 
