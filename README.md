@@ -8,6 +8,9 @@ The module is a standard file operate. You can download the latest version of fi
 After run the file, then you can see the hello world print on screen
 
 # jmx
+## condition
+- jdk1.8
+
 ## instruction
 - jvisualvm  脚本参数
 ```ruby
@@ -19,5 +22,6 @@ JAVA_OPTS="$JAVA_OPTS -Djava.rmi.server.hostname=192.168.1.12"   #配置本机IP
 ```
 - 脚本启动命令
 ```shell
+# $MAINCLASS 是main函数的类地址
 nohup $JAVA_HOME/bin/java $JAVA_OPTS $MAINCLASS start
 ```
