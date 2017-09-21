@@ -22,6 +22,8 @@ JAVA_OPTS="$JAVA_OPTS -Djava.rmi.server.hostname=192.168.1.12"   #配置本机IP
 ```
 - 脚本启动命令
 ```shell
-# $MAINCLASS 是main函数的类地址
+# $MAINCLASS 是main函数的类目录
+# $JAVA_HOME 是jdk目录
+
 nohup $JAVA_HOME/bin/java $JAVA_OPTS $MAINCLASS start
 ```
