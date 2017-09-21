@@ -35,7 +35,7 @@ public class JmxManager {
 		Map<String, String[]> map = new HashMap<String, String[]>();
 		map.put("jmx.remote.credentials", new String[] { "monitorRole", "QED" });
 		//service:jmx:rmi:///jndi/rmi://10.0.76.32:10086/jmxrmi
-		String socket = "10.1.251.16:10086";
+		String socket = "10.0.76.32:10086";
 		String jmxURL = "service:jmx:rmi:///jndi/rmi://" +socket +"/jmxrmi";
 
 		JMXServiceURL serviceURL = new JMXServiceURL(jmxURL);
@@ -77,15 +77,15 @@ public class JmxManager {
 		long usedMemory = heapMemoryUsage.getUsed();
 		System.out.print("堆内存总量:" + heapMemoryUsage.getMax() / 1024 + "KB,当前分配量:" + commitMemory / 1024 + "KB,当前使用率:"
 				+ usedMemory / 1024 + "KB,");
-		System.out.println("堆内存使用率:" + (int) usedMemory * 100 / commitMemory + "%");// 堆使用率
+		System.out.println("堆内存使用率:" +  usedMemory * 100 / commitMemory + "%");// 堆使用率
 
 		// 栈内存
 		MemoryUsage nonheapMemoryUsage = MemoryUsage
 				.from((CompositeDataSupport) mbsc.getAttribute(heapObjName, "NonHeapMemoryUsage"));
 		long noncommitMemory = nonheapMemoryUsage.getCommitted();
-		long nonusedMemory = heapMemoryUsage.getUsed();
+		long nonusedMemory = nonheapMemoryUsage.getUsed();
 
-		System.out.println("栈内存使用率:" + (int) nonusedMemory * 100 / noncommitMemory + "%");
+		System.out.println("栈内存使用率:" +  nonusedMemory * 100 / noncommitMemory + "%");
 
 		
 		
@@ -94,13 +94,13 @@ public class JmxManager {
 		
 		
 		// PermGen内存   java.lang:type=MemoryPool,name=PS Survivor Space
-		ObjectName permObjName = new ObjectName("java.lang:type=MemoryPool,name=Metaspace");
-		Object object1  = mbsc.getAttribute(permObjName, "Usage");
+		ObjectName MetaspaceObjName = new ObjectName("java.lang:type=MemoryPool,name=Metaspace");
+		Object object1  = mbsc.getAttribute(MetaspaceObjName, "Usage");
 
-		MemoryUsage permGenUsage = MemoryUsage.from((CompositeDataSupport) object1);
-		long committed = permGenUsage.getCommitted();// 元空间大小
-		long used = heapMemoryUsage.getUsed();//
-		System.out.println("Metaspace:" + (int) used * 100 / committed + "%");// 元空间使用率
+		MemoryUsage Metaspace = MemoryUsage.from((CompositeDataSupport) object1);
+		long committed = Metaspace.getCommitted();// 元空间大小  70909952
+		long used = Metaspace.getUsed();//70909952
+		System.out.println("Metaspace:" +  used * 100 / committed + "%");// 元空间使用率
 
 	}
 

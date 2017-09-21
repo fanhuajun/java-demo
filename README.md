@@ -1,6 +1,4 @@
 # javademo
-- [1. file]
-- [2. jmx]
 
 
 ## file
@@ -10,10 +8,10 @@ The module is a standard file operate. You can download the latest version of fi
 After run the file, then you can see the hello world print on screen
 
 ## jmx
-### 2.1 condition
+### condition
 - jdk1.8
 
-### 2.2 instruction
+### instruction
 - jvisualvm  脚本参数
 ```ruby
 JAVA_OPTS="$JAVA_OPTS -Dcom.sun.management.jmxremote"
@@ -29,3 +27,11 @@ JAVA_OPTS="$JAVA_OPTS -Djava.rmi.server.hostname=192.168.1.12"   #配置本机IP
 
 nohup $JAVA_HOME/bin/java $JAVA_OPTS $MAINCLASS start
 ```
+
+## spring-cloud-netflix-eureka-server
+启动eureka-server 管理多个eureka-client
+
+
+
+
+
