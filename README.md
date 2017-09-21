@@ -1,6 +1,6 @@
 # javademo
-- file
-- jmx
+* file
+* jmx
 
 
 # file
