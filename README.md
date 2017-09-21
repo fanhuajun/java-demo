@@ -1,6 +1,6 @@
 # javademo
-[1. file]
-[2. jmx]
+- [1. file]
+- [2. jmx]
 
 
 # file
