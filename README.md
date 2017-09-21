@@ -1,4 +1,7 @@
 # javademo
+- file
+- jmx
+
 
 # file
 ## Install instruction
