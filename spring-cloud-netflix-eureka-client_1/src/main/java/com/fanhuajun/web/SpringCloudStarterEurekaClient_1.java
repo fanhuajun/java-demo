@@ -1,37 +1,28 @@
 package com.fanhuajun.web;
 
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.boot.builder.SpringApplicationBuilder;
-import org.springframework.boot.context.embedded.ConfigurableEmbeddedServletContainer;
-import org.springframework.boot.context.embedded.EmbeddedServletContainer;
-import org.springframework.boot.context.embedded.EmbeddedServletContainerCustomizer;
-import org.springframework.boot.context.embedded.EmbeddedServletContainerException;
-import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.cloud.client.loadbalancer.LoadBalanced;
+import org.springframework.cloud.netflix.hystrix.EnableHystrix;
+import org.springframework.cloud.netflix.hystrix.dashboard.EnableHystrixDashboard;
+import org.springframework.context.annotation.Bean;
+import org.springframework.web.client.RestTemplate;
 
-@Configuration
-@ComponentScan
-@EnableAutoConfiguration
-@EnableEurekaClient
-@RestController
+@SpringBootApplication
+@EnableDiscoveryClient
+@EnableHystrix
+@EnableHystrixDashboard
 public class SpringCloudStarterEurekaClient_1 {
 
-    @RequestMapping("/")
-    public String home() {
-        return "Hello world";
-    }
-    
-    @RequestMapping("/info")
-    public String info(){
-    	return "Hello world info";
+    public static void main(String[] args) {
+        SpringApplication.run(SpringCloudStarterEurekaClient_1.class, args);
     }
 
-    public static void main(String[] args) {
-    	
-        new SpringApplicationBuilder(SpringCloudStarterEurekaClient_1.class).web(true).run(args);
+    @Bean
+    @LoadBalanced
+    RestTemplate restTemplate() {
+        return new RestTemplate();
     }
 
 }
