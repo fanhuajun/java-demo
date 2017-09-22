@@ -17,24 +17,21 @@ import org.springframework.web.bind.annotation.RestController;
 @EnableAutoConfiguration
 @EnableEurekaClient
 @RestController
-public class SpringCloudStarterEurekaClient_1 implements EmbeddedServletContainerCustomizer {
+public class SpringCloudStarterEurekaClient_1 {
 
     @RequestMapping("/")
     public String home() {
         return "Hello world";
+    }
+    
+    @RequestMapping("/info")
+    public String info(){
+    	return "Hello world info";
     }
 
     public static void main(String[] args) {
     	
         new SpringApplicationBuilder(SpringCloudStarterEurekaClient_1.class).web(true).run(args);
     }
-
-	@Override
-	public void customize(ConfigurableEmbeddedServletContainer container) {
-		// TODO Auto-generated method stub
-		container.setPort(8082);
-		
-	}
-
 
 }

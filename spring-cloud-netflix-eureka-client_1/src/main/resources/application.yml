@@ -1,7 +1,13 @@
 eureka:
   client:
+    healthcheck:
+      enabled: true
     serviceUrl:
       defaultZone: http://localhost:8761/eureka/
   instance:
-    hostname: nihao
-    nonSecurePort: 8081
+      appname: spring-cloud-eureka-client_1
+      hostname: localhost
+      lease-expiration-duration-in-seconds: 30 
+      lease-renewal-interval-in-seconds: 10
+server:
+  port: 8082
