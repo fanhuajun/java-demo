@@ -23,9 +23,5 @@ public class UserController {
     public void inserUser(){
         System.out.println("inserUser");
     }
-    
-    static{
-        System.out.println("静态方法");
-    }
 
 }

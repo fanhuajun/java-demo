@@ -16,7 +16,6 @@ public class JavaCodeStandardApplicationTests {
 	@Test
 	public void contextLoads() {
 	    
-	    System.out.println("nihao");
 	    UserController.inserUser();
 	}
 

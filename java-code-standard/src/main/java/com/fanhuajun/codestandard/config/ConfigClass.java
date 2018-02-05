@@ -19,7 +19,7 @@ import org.springframework.context.annotation.ImportResource;
  * 
  */
 @Configuration
-@ImportResource(locations={"classpath:application-aop.xml"})
+//@ImportResource(locations={"classpath:application-aop.xml"})
 public class ConfigClass {
 
 }
