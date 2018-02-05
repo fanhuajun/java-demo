@@ -1,0 +1,31 @@
+/*
+ * @(#)Test.java 2018年2月5日
+ * 
+ * Copyright (c), 2018 万科物业发展有限公司
+ * 
+ * 著作权人保留一切权利，任何使用需经授权。
+ */
+package com.fanhuajun.codestandard;
+
+import org.springframework.stereotype.Service;
+
+/**
+ *
+ * @author fanhuajun
+ * @date 2018年2月5日 下午2:45:07
+ * @version V1.0.0
+ * @description：
+ * 
+ */
+@Service
+public class UserController {
+    
+    public void inserUser(){
+        System.out.println("inserUser");
+    }
+    
+    static{
+        System.out.println("静态方法");
+    }
+
+}

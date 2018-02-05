@@ -18,6 +18,7 @@
 		<module>spring-boot-freemarker</module>
 		
 		<module>springboot-weixin-java-mp</module>
+		<module>java-code-standard</module>
 		
 		<module>file</module>
 		<module>jmx</module>
