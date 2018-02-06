@@ -7,22 +7,29 @@
  */
 package com.fanhuajun.codestandard.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
-import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  *
  * @author fanhuajun
  * @date 2018年2月5日 下午2:45:07
- * @version V1.0.0
- * @description：
+ * @version V1.0.0 @description：
  * 
  */
 @Controller
 public class UserController {
+
+    private static final Logger logger = LoggerFactory.getLogger(UserController.class);
     
-    public void inserUser(){
-        System.out.println("inserUser");
+    @RequestMapping(value = "/fanhuajun/user") // http://localhost:8080/fanhuajun/user
+    @ResponseBody
+    public void inserUser() {
+        logger.info("inserUser");
     }
 
 }
+                                                      
