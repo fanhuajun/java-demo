@@ -30,8 +30,12 @@ public class ControllerAOP {
 
         try {
             System.out.println("进入aop：" + startTime);
+            
+            //目标方法
             pjp.proceed();
-            System.out.println("结束aop：" + startTime);
+            
+            long endTime = System.currentTimeMillis();
+            System.out.println("结束aop：" + endTime);
             // logger.info(pjp.getSignature() + "use time:" + (System.currentTimeMillis() - startTime));
         } catch (Throwable e) {
 

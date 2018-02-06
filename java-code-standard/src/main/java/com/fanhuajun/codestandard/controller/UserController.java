@@ -5,8 +5,9 @@
  * 
  * 著作权人保留一切权利，任何使用需经授权。
  */
-package com.fanhuajun.codestandard;
+package com.fanhuajun.codestandard.controller;
 
+import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 
 /**
@@ -17,7 +18,7 @@ import org.springframework.stereotype.Service;
  * @description：
  * 
  */
-@Service
+@Controller
 public class UserController {
     
     public void inserUser(){
