@@ -10,7 +10,11 @@ package com.fanhuajun.codestandard.aop;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
+
+import com.fanhuajun.codestandard.controller.UserController;
 
 /**
  *
@@ -23,19 +27,21 @@ import org.springframework.stereotype.Component;
 @Aspect
 public class ControllerAOP {
     
+    private static final Logger logger = LoggerFactory.getLogger(UserController.class);
+    
     @Around(value="execution(public void inserUser(..))")
     public Object handlerControllerMethod(ProceedingJoinPoint pjp) {
 
         long startTime = System.currentTimeMillis();
 
         try {
-            System.out.println("进入aop：" + startTime);
+            logger.info("进入aop：{}", startTime);
             
             //目标方法
             pjp.proceed();
             
             long endTime = System.currentTimeMillis();
-            System.out.println("结束aop：" + endTime);
+            logger.info("结束aop：{}", endTime);
             // logger.info(pjp.getSignature() + "use time:" + (System.currentTimeMillis() - startTime));
         } catch (Throwable e) {
 
