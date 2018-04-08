@@ -22,6 +22,7 @@
 		
 		<module>file</module>
 		<module>jmx</module>
+		<module>java-base</module>
 	</modules>
 	
 </project>
