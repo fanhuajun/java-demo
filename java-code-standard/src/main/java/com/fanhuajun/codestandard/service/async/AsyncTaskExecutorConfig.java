@@ -32,7 +32,7 @@ public class AsyncTaskExecutorConfig implements AsyncConfigurer {
     @Override
     public Executor getAsyncExecutor() {
         ThreadPoolTaskExecutor taskExecutor = new ThreadPoolTaskExecutor();
-        taskExecutor.setCorePoolSize(30);
+        taskExecutor.setCorePoolSize(40);
         taskExecutor.setMaxPoolSize(50); // 线程大小
         taskExecutor.setQueueCapacity(1024);
         taskExecutor.initialize();
