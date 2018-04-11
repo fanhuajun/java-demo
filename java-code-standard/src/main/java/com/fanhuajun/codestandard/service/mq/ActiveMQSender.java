@@ -27,7 +27,7 @@ import org.apache.activemq.ActiveMQConnectionFactory;
  */
 public class ActiveMQSender {
 
-    private static final int SEND_NUMBER = 1;
+    private static final int SEND_NUMBER = 5;
 
     public static void main(String[] args) {
 
@@ -53,8 +53,7 @@ public class ActiveMQSender {
             producer.setDeliveryMode(DeliveryMode.NON_PERSISTENT);
             // 构造消息，此处写死，项目就是参数，或者方法获取
             sendMessage(session, producer);
-            sendMessage(session, producer);
-            sendMessage(session, producer);
+            sendMessage2(session, producer);
             session.commit();
         } catch (Exception e) {
             e.printStackTrace();
@@ -68,8 +67,19 @@ public class ActiveMQSender {
     }
 
     public static void sendMessage(Session session, MessageProducer producer) throws Exception {
-        for (int i = 1; i <= SEND_NUMBER; i++) {
+        for (int i = 1; i <= 3; i++) {
             TextMessage message = session.createTextMessage("ActiveMq 发送的消息" + i);
+            // 发送消息到目的地方
+
+            System.out.println("发送消息：" + "ActiveMq 发送的消息" + i);
+            producer.send(message);
+        }
+    }
+    
+    public static void sendMessage2(Session session, MessageProducer producer) throws Exception {
+        for (int i = 1; i <= 3; i++) {
+            TextMessage message = session.createTextMessage("ActiveMq 发送的消息" + i);
+            message.setIntProperty("age", 26);
             // 发送消息到目的地方
 
             System.out.println("发送消息：" + "ActiveMq 发送的消息" + i);

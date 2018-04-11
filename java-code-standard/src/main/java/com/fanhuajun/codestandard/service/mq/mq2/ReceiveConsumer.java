@@ -24,21 +24,20 @@ import org.apache.activemq.ActiveMQConnectionFactory;
  *
  * @author fanhuajun
  * @date 2018年4月10日 下午5:58:54
- * @version V1.0.0
- * @description：
+ * @version V1.0.0 @description：
  * 
  */
 public class ReceiveConsumer {
-    
+
     CountDownLatch latch = new CountDownLatch(1);
-    
+
     /**
      * 接收消息.<br>
      * 
      * @param listener
      *            监听器，如果消息接收成功，将被回调.
      */
-    public void receive(MessageListener listener) {
+    public void receive(MessageListener listener, int ackType, String SELECTOR_1) {
         ConnectionFactory connectionFactory = null;
         Connection connection = null;
         Session session = null;
@@ -51,9 +50,13 @@ public class ReceiveConsumer {
             connection = connectionFactory.createConnection();
             connection.start(); // connection should be called in
                                 // receiver-client
-            session = connection.createSession(Boolean.FALSE, Session.AUTO_ACKNOWLEDGE);
+            session = connection.createSession(Boolean.FALSE, ackType);
             destination = session.createQueue("FirstQueue");
-            consumer = session.createConsumer(destination);
+            if (SELECTOR_1 == null) {
+                consumer = session.createConsumer(destination);
+            } else {
+                consumer = session.createConsumer(destination, SELECTOR_1);
+            }
             // key code for asynchronous receive:set messageListener
             consumer.setMessageListener(listener);
             try {

@@ -10,6 +10,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fanhuajun.codestandard.model.User;
+
 
 /**
  * @author <a href="mailto:yadong.zhang0415@gmail.com">yadong.zhang</a>
@@ -23,6 +25,9 @@ public class Applaction {
 
     @Autowired
     private PropertiesConfig propertiesConfig;
+    
+    @Autowired
+    User user;
 
     /**
      * 
@@ -34,6 +39,7 @@ public class Applaction {
      */
     @RequestMapping("/config")
     public Map<String, Object> configurationProperties() {
+        user.getUsername();
         Map<String, Object> map = new HashMap<String, Object>();
         map.put("type", propertiesConfig.getType3());
         map.put("title", propertiesConfig.getTitle3());

@@ -1,16 +1,9 @@
 package com.fanhuajun.codestandard.service.mq.mq2;
-import javax.jms.Connection;
-import javax.jms.ConnectionFactory;
-import javax.jms.Destination;
 import javax.jms.JMSException;
 import javax.jms.Message;
-import javax.jms.MessageConsumer;
 import javax.jms.MessageListener;
 import javax.jms.Session;
 import javax.jms.TextMessage;
-import javax.naming.Context;
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
 
 import org.junit.Test;
 /**
@@ -45,9 +38,16 @@ public class ClientAckConsumer {
                 } catch (JMSException e) {
                     e.printStackTrace();
                 }
+                
+                try {
+                    System.out.println("睡眠5秒");
+                    Thread.sleep(5 * 1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
         };
-        receiveConsumer.receive(listener);
+        receiveConsumer.receive(listener, Session.CLIENT_ACKNOWLEDGE, null);
     }
     
     private int ack_count = 0; // 确认次数统计
@@ -64,15 +64,22 @@ public class ClientAckConsumer {
                     System.out.println(text);
                     
                     ack_count ++;
-                    if (ack_count % 2 == 0)
+                    if (ack_count % 2 == 0){
+                        System.out.println("客户端确认");
                         message.acknowledge();
-                    
+                    }
                 } catch (JMSException e) {
+                    e.printStackTrace();
+                }
+                
+                try {
+                    Thread.sleep(5 * 1000);
+                } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
             }
         };
-        receiveConsumer.receive(listener);
+        receiveConsumer.receive(listener, Session.CLIENT_ACKNOWLEDGE, null);
     }
 }
 

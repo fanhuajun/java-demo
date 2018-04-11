@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.PropertySource;
 //import org.springframework.context.annotation.PropertySource;
@@ -19,11 +20,12 @@ import org.springframework.stereotype.Component;
  * @since JDK ： 1.7
  */
 @Component
-@ConfigurationProperties(prefix = "com.zyd")
+//@ConfigurationProperties(prefix = "com.zyd")
 // PropertySource默认取application.properties
 @PropertySource(value = "conf/jms.properties")
 public class PropertiesConfig {
 
+    @Value("${com.zyd.type3}")
     public String type3;
     public String title3;
     public Map<String, String> login = new HashMap<String, String>();

@@ -16,5 +16,10 @@
 			<bean class="com.fanhuajun.codestandard.filter.UserFilter" />
 		</mvc:interceptor>
 	</mvc:interceptors>
+	
+	
+	<bean id="myUser" class="com.fanhuajun.codestandard.model.User">
+        <property name="username" value="${com.zyd.type3}"/>
+    </bean>
 
 </beans>

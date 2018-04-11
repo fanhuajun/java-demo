@@ -1,19 +1,11 @@
 package com.fanhuajun.codestandard.service.mq.mq2;
 
-import java.util.concurrent.CountDownLatch;
-
-import javax.jms.Connection;
-import javax.jms.ConnectionFactory;
-import javax.jms.Destination;
 import javax.jms.JMSException;
 import javax.jms.Message;
-import javax.jms.MessageConsumer;
 import javax.jms.MessageListener;
 import javax.jms.Session;
 import javax.jms.TextMessage;
 
-import org.apache.activemq.ActiveMQConnection;
-import org.apache.activemq.ActiveMQConnectionFactory;
 import org.junit.Test;
 
 /**
@@ -30,6 +22,8 @@ public class AutoAckConsumer {
     static final String QUEUE_JNDI_NAME = "exampleQueue";
     
     ReceiveConsumer receiveConsumer = new ReceiveConsumer();
+    
+    String SELECTOR_1 = "age > 25";
 
     /**
      * 正常的接收.<br>
@@ -44,9 +38,15 @@ public class AutoAckConsumer {
                 } catch (JMSException e) {
                     e.printStackTrace();
                 }
+                
+                try {
+                    Thread.sleep(1 * 1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
         };
-        receiveConsumer.receive(listener);
+        receiveConsumer.receive(listener, Session.AUTO_ACKNOWLEDGE, SELECTOR_1);
     }
 
     /**
@@ -74,7 +74,7 @@ public class AutoAckConsumer {
                 }
             }
         };
-        receiveConsumer.receive(listener);
+        receiveConsumer.receive(listener, Session.AUTO_ACKNOWLEDGE, "age > 25");
     }
 
     
