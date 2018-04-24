@@ -7,6 +7,8 @@
  */
 package com.fanhuajun.codestandard.service.spring;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.context.event.SpringApplicationEvent;
 import org.springframework.context.ApplicationListener;
 
@@ -20,10 +22,12 @@ import org.springframework.context.ApplicationListener;
  */
 public class SpringListener implements ApplicationListener<SpringApplicationEvent> {
 
+    private static final Logger logger = LoggerFactory.getLogger(SpringListener.class);
+    
     @Override
     public void onApplicationEvent(SpringApplicationEvent event) {
-        System.out.println("事件" +event.toString());
         
+        logger.info("事件", event.toString());
     }
 
 }
