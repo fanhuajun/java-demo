@@ -1,2 +1,7 @@
 org.springframework.context.ApplicationContextInitializer=\
-com.fanhuajun.codestandard.service.SpringInit
+com.fanhuajun.codestandard.service.spring.SpringInit
+
+
+# Application Listeners
+org.springframework.context.ApplicationListener=\
+com.fanhuajun.codestandard.service.spring.SpringListener

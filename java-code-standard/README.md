@@ -19,3 +19,7 @@
 ```
 
 > [lockback.xml](https://github.com/fanhuajun/java-demo/tree/master/java-code-standard/src/main/resources/conf/logback.xml)
+
+
+# 2日志规范
+> 用户信息放入MDC

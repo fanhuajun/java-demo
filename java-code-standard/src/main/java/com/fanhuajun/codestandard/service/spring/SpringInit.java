@@ -5,7 +5,7 @@
  * 
  * 著作权人保留一切权利，任何使用需经授权。
  */
-package com.fanhuajun.codestandard.service;
+package com.fanhuajun.codestandard.service.spring;
 
 import org.springframework.context.ApplicationContextInitializer;
 import org.springframework.context.ConfigurableApplicationContext;
