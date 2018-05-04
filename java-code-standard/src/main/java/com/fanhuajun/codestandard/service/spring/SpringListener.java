@@ -27,7 +27,7 @@ public class SpringListener implements ApplicationListener<SpringApplicationEven
     @Override
     public void onApplicationEvent(SpringApplicationEvent event) {
         
-        logger.info("事件", event.toString());
+        logger.info("事件={}", event.getSource());
     }
 
 }
