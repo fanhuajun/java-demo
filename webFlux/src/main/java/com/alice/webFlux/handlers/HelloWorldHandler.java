@@ -11,7 +11,8 @@ import reactor.core.publisher.Mono;
 @Service
 public class HelloWorldHandler {
 	
-	//https://blog.csdn.net/tjq980303/article/details/79222350
+	// https://blog.csdn.net/tjq980303/article/details/79222350
+	// http://127.0.0.1:8080/hello
 
     public Mono<ServerResponse> helloWorld(ServerRequest request){
         return ServerResponse.ok()

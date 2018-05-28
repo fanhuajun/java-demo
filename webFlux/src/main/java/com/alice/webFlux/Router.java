@@ -13,7 +13,7 @@ import com.alice.webFlux.handlers.HelloWorldHandler;
 public class Router {
     @Autowired private HelloWorldHandler helloWorldHandler;
 //    @Autowired private UserHandler userHandler;
-
+// http://127.0.0.1:8080/hello
     @Bean
     public RouterFunction<?> routerFunction(){
         return RouterFunctions.route(RequestPredicates.GET("/hello"), helloWorldHandler::helloWorld);
