@@ -23,6 +23,7 @@
 		<module>file</module>
 		<module>jmx</module>
 		<module>java-base</module>
+		<module>webFlux</module>
 	</modules>
 	
 </project>
