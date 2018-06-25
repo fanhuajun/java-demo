@@ -19,9 +19,9 @@ public class ZKClient implements Watcher {
     private static final Logger logger = null;
 
     // 定义session失效时间
-    private static final int SESSION_TIMEOUT = 10000;
+    private static final int SESSION_TIMEOUT = 20000;
     // zookeeper服务器地址
-    private static final String ZOOKEEPER_ADDRESS = "10.0.73.176:2181";
+    private static final String ZOOKEEPER_ADDRESS = "10.0.74.128:2181";
 
     // ZooKeeper变量
     private ZooKeeper zk = null;

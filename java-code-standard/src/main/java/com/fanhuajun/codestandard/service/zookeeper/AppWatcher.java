@@ -24,12 +24,12 @@ public class AppWatcher implements Watcher {
     ZooKeeper zooKeeper;
 
     public static void main(String[] args) throws IOException, InterruptedException, KeeperException {
-        String p = "/testaa1";
-        ZooKeeper zooKeeper = new ZooKeeper("47.92.96.66:2181", 5000, new AppWatcher());
+        String node = "/testaa1";
+        ZooKeeper zooKeeper = new ZooKeeper("10.0.74.128:2181", 5000, new AppWatcher());
         connectedSemaphore.await();
         // exists register watch
-        zooKeeper.exists(p, true);
-        String path = zooKeeper.create(p, "456".getBytes(), Ids.OPEN_ACL_UNSAFE, CreateMode.PERSISTENT);
+        zooKeeper.exists(node, true);
+        String path = zooKeeper.create(node, "456".getBytes(), Ids.OPEN_ACL_UNSAFE, CreateMode.PERSISTENT);
         // get register watch
         zooKeeper.getData(path, true, stat);
         zooKeeper.setData(path, "hhhh".getBytes(), -1);

@@ -30,7 +30,7 @@ public class Applaction {
     User user;
 
     /**
-     * 
+     * {@linkplain ConfigClass#}
      * 第一种方式：使用`@ConfigurationProperties`注解将配置文件属性注入到配置对象类中
      * 
      * @author zyd
