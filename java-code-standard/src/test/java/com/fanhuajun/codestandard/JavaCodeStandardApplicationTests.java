@@ -14,7 +14,7 @@ import com.fanhuajun.codestandard.service.UserServiceImpl;
 import com.fanhuajun.codestandard.service.async.AsyncTaskService;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class JavaCodeStandardApplicationTests {
 
 	@Autowired

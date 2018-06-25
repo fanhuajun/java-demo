@@ -8,9 +8,10 @@ import java.util.concurrent.TimeUnit;
 public class MyExecutorService {
 	
 	public static void main(String[] args) {
-		int count = 22;
+		int count = 100;
 		CountDownLatch latch = new CountDownLatch(count);
-		ThreadPoolExecutor executor = new ThreadPoolExecutor(6, 10, 5, TimeUnit.SECONDS, new LinkedBlockingDeque<Runnable>(22));
+		// new SynchronousQueue<Runnable>()
+		ThreadPoolExecutor executor = new ThreadPoolExecutor(6, 10, 5, TimeUnit.SECONDS, new LinkedBlockingDeque<Runnable>());
 		
 		Runnable myRunnable = new Runnable() {
 		    @Override
