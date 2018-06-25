@@ -7,8 +7,14 @@
  */
 package com.fanhuajun.codestandard.config;
 
+import java.io.IOException;
+
+import org.apache.zookeeper.ZooKeeper;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.ImportResource;
+
+import com.fanhuajun.codestandard.service.zookeeper.AppWatcher;
 
 /**
  *
@@ -22,4 +28,15 @@ import org.springframework.context.annotation.ImportResource;
 @ImportResource(locations={"classpath:application_context_dependence.xml"})
 public class ConfigClass {
 
+//	@Bean
+	public ZooKeeper zooKeeperBean () {
+		ZooKeeper zooKeeper = null;
+		try {
+			zooKeeper = new ZooKeeper("10.0.74.128:2181", 5000, new AppWatcher());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return zooKeeper;
+	}
 }
