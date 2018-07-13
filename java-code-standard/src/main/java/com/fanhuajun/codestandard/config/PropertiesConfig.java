@@ -35,6 +35,7 @@ public class PropertiesConfig {
     }
 
     public void setType3(String type3) {
+    	System.out.println("setType3---------");
         this.type3 = type3;
     }
 
