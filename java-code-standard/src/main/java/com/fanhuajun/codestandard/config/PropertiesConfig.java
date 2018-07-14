@@ -21,10 +21,10 @@ import org.springframework.stereotype.Component;
 @Component
 //@ConfigurationProperties(prefix = "com.zyd")
 // PropertySource默认取application.properties
-@PropertySource(value = "conf/jms.properties")
+@PropertySource(value = "conf/jdbc.properties")
 public class PropertiesConfig {
 
-    @Value("${com.zyd.type3}")
+//    @Value("${spring.datasource.url}")
     public String type3;
     public String title3;
     public Map<String, String> login = new HashMap<String, String>();

@@ -9,7 +9,11 @@ package com.fanhuajun.codestandard.config;
 
 import java.io.IOException;
 
+import javax.sql.DataSource;
+
 import org.apache.zookeeper.ZooKeeper;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceBuilder;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.ImportResource;
@@ -38,5 +42,11 @@ public class ConfigClass {
 			e.printStackTrace();
 		}
 		return zooKeeper;
+	}
+	
+	@Bean
+	@ConfigurationProperties("app.datasource")
+	public DataSource dataSource() {
+	    return DataSourceBuilder.create().build();
 	}
 }

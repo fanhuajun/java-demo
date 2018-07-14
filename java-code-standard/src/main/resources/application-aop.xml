@@ -5,7 +5,7 @@
         http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
 
 	<!-- aop -->
-	<aop:aspectj-autoproxy />
+	<!-- <aop:aspectj-autoproxy /> -->
 	<bean id="controllerAop" class="com.fanhuajun.codestandard.aop.ControllerAOP" />
 	<aop:config>
 		<aop:aspect id="myAop" ref="controllerAop">

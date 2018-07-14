@@ -19,7 +19,7 @@
 	
 	
 	<bean id="myUser" class="com.fanhuajun.codestandard.model.User">
-        <property name="username" value="${com.zyd.type3}"/>
+        <property name="username" value="qw"/>
     </bean>
 
 </beans>
