@@ -10,6 +10,11 @@ import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
 
+/**
+ * https://www.jianshu.com/p/1417eefd2ab1
+ * @author fanhuajun
+ *
+ */
 @Component
 public class RoutingBeanPostProcessor implements BeanPostProcessor {
 
@@ -25,14 +30,14 @@ public class RoutingBeanPostProcessor implements BeanPostProcessor {
 	public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
 		Class clazz = bean.getClass();
 		Field[] fields = clazz.getDeclaredFields();
-		for (Field f : fields) {
-			if (f.isAnnotationPresent(RoutingInjected.class)) {
-				if (!f.getType().isInterface()) {
+		for (Field field : fields) {
+			if (field.isAnnotationPresent(RoutingInjected.class)) {
+				if (!field.getType().isInterface()) {
 					throw new BeanCreationException(
-							"RoutingInjected field must be declared as an interface:" + f.getName() + " @Class " + clazz.getName());
+							"RoutingInjected field must be declared as an interface:" + field.getName() + " @Class " + clazz.getName());
 				}
 				try {
-					this.handleRoutingInjected(f, bean, f.getType());
+					this.handleRoutingInjected(field, bean, field.getType());
 				} catch (IllegalAccessException e) {
 					throw new BeanCreationException("Exception thrown when handleAutowiredRouting", e);
 				}

@@ -44,8 +44,8 @@ public class ConfigClass {
 		return zooKeeper;
 	}
 	
-	@Bean
-	@ConfigurationProperties("app.datasource")
+//	@Bean
+//	@ConfigurationProperties("app.datasource")
 	public DataSource dataSource() {
 	    return DataSourceBuilder.create().build();
 	}
