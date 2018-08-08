@@ -48,7 +48,7 @@ public class RoutingBeanProxyFactory {
         }
 
         public Object getTargetBean(String switchName) {
-            boolean switchOn = false;
+            boolean switchOn = true;
             /*if (RoutingVersion.A.equals(switchName)) {
                 switchOn = false;
             } else if (RoutingVersion.B.equals(switchName)) {

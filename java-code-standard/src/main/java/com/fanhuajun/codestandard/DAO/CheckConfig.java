@@ -11,11 +11,11 @@ public class CheckConfig {
 	
 private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 	
-	/*@Autowired private DataSource dataSource;*/
+//	@Autowired private DataSource dataSource;
 	
 	public CheckConfig() {
 		
-//		logger.info("--dataSource--={}", dataSource);
+		logger.info("--dataSource--={}");
 	}
 	
 }

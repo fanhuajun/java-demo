@@ -25,7 +25,9 @@ public class UserController {
 
     private static final Logger logger = LoggerFactory.getLogger(UserController.class);
     
-    @RequestMapping(value = "/fanhuajun/user") // http://localhost:8080/fanhuajun/user
+//    @Autowired private DataSource dataSource;
+    
+    @RequestMapping(value = "/getUser") // http://localhost:8080/getUser
     @ResponseBody
     public void inserUser() {
         logger.info("inserUser");
