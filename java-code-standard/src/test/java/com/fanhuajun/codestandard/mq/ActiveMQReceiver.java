@@ -5,17 +5,12 @@
  * 
  * 著作权人保留一切权利，任何使用需经授权。
  */
-package com.fanhuajun.codestandard.service.mq;
-
-import javax.jms.Connection;
-import javax.jms.ConnectionFactory;
-import javax.jms.Destination;
-import javax.jms.MessageConsumer;
-import javax.jms.Session;
-import javax.jms.TextMessage;
+package com.fanhuajun.codestandard.mq;
 
 import org.apache.activemq.ActiveMQConnection;
 import org.apache.activemq.ActiveMQConnectionFactory;
+
+import javax.jms.*;
 
 /**
  *
@@ -37,6 +32,9 @@ public class ActiveMQReceiver {
         Destination destination;
         // 消费者，消息接收者
         MessageConsumer consumer;
+        /**
+         * 10.0.73.176:8161
+         */
         connectionFactory = new ActiveMQConnectionFactory(ActiveMQConnection.DEFAULT_USER, ActiveMQConnection.DEFAULT_PASSWORD, "tcp://10.0.73.176:61616");
         try {
             // 构造从工厂得到连接对象

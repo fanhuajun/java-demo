@@ -1,16 +1,11 @@
-package com.fanhuajun.codestandard.service.mq.mq2;
+package com.fanhuajun.codestandard.mq.mq2;
 
-import javax.jms.Connection;
-import javax.jms.ConnectionFactory;
-import javax.jms.Destination;
-import javax.jms.JMSException;
-import javax.jms.MessageProducer;
-import javax.jms.Session;
-import javax.jms.TextMessage;
+import org.junit.Test;
+
+import javax.jms.*;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
-import org.junit.Test;
 
 /**
  * A simple demo for producer client to send message to ActiveMQ.<br>

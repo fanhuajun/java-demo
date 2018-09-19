@@ -1,11 +1,9 @@
-package com.fanhuajun.codestandard.service.mq.mq2;
-import javax.jms.JMSException;
-import javax.jms.Message;
-import javax.jms.MessageListener;
-import javax.jms.Session;
-import javax.jms.TextMessage;
+package com.fanhuajun.codestandard.mq.mq2;
 
 import org.junit.Test;
+
+import javax.jms.*;
+
 /**
  * CLIENT_ACKNOWLEDGE确认模式的Consumer.<br>
  * 基于PTP Mode，采用异步的方式接收消息，研究从不确认、每2次确认的情况下，Queue中的消息的出队情况.<br>

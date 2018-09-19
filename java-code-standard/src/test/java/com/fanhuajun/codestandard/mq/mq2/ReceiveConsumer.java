@@ -5,20 +5,13 @@
  * 
  * 著作权人保留一切权利，任何使用需经授权。
  */
-package com.fanhuajun.codestandard.service.mq.mq2;
-
-import java.util.concurrent.CountDownLatch;
-
-import javax.jms.Connection;
-import javax.jms.ConnectionFactory;
-import javax.jms.Destination;
-import javax.jms.JMSException;
-import javax.jms.MessageConsumer;
-import javax.jms.MessageListener;
-import javax.jms.Session;
+package com.fanhuajun.codestandard.mq.mq2;
 
 import org.apache.activemq.ActiveMQConnection;
 import org.apache.activemq.ActiveMQConnectionFactory;
+
+import javax.jms.*;
+import java.util.concurrent.CountDownLatch;
 
 /**
  *

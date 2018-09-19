@@ -1,12 +1,8 @@
-package com.fanhuajun.codestandard.service.mq.mq2;
-
-import javax.jms.JMSException;
-import javax.jms.Message;
-import javax.jms.MessageListener;
-import javax.jms.Session;
-import javax.jms.TextMessage;
+package com.fanhuajun.codestandard.mq.mq2;
 
 import org.junit.Test;
+
+import javax.jms.*;
 
 /**
  * AUTO_ACKNOWLEDGE确认模式的Consumer.<br>
